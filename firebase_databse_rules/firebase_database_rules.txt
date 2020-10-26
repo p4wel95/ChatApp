@@ -1,0 +1,40 @@
+{
+  "rules": {
+    "Users": {
+      ".read": true,
+      "$user_id": {
+      ".write": "$user_id === auth.uid"
+      }
+    },
+    "Notifications": {
+      ".read": true,
+    	".write": "!data.exists()"
+    },
+    "Messages":{
+      "$user_id": {
+      	".read": "$user_id === auth.uid",
+          "$user_id2": {
+            ".write": "$user_id === auth.uid || $user_id2 === auth.uid"
+          }
+      }
+    },
+    "Chat_requests":{
+     "$user_id": {
+        ".read": "$user_id === auth.uid",
+          "$user_id2": {
+            ".write": "$user_id === auth.uid || $user_id2 === auth.uid"
+          }
+          
+      }
+    },
+    "Contacts":{
+      "$user_id": {
+        ".read": "$user_id === auth.uid",
+          "$user_id2": {
+            ".write": "$user_id === auth.uid || $user_id2 === auth.uid"
+          }
+          
+      }
+    }
+  }
+}
